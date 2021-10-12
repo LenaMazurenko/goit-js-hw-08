@@ -4,4 +4,4 @@ var e=arguments[3];function t(e,t){if(!(e instanceof t))throw new TypeError("Can
 },{}],"iiAF":[function(require,module,exports) {
 "use strict";var e=o(require("@vimeo/player"));function o(e){return e&&e.__esModule?e:{default:e}}require(["https://player.vimeo.com/api/player.js"],function(e){new e(document.querySelector("#vimeo-player")).on("play",function(){console.log("played the video!")})}),nn;
 },{"@vimeo/player":"zU8P"}]},{},["iiAF"], null)
-//# sourceMappingURL=/parcel-project-template/02-video.e7667b36.js.map
+//# sourceMappingURL=/goit-js-hw-08/02-video.e7667b36.js.map
