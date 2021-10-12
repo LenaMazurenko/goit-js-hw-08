@@ -3,10 +3,10 @@
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://goitacademy.github.io/parcel-project-template",
+  "homepage": "https://github.com/LenaMazurenko/goit-js-hw-08",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/LenaMazurenko/parcel-project-template/"
+    "build": "parcel build src/LenaMazurenko/goit-js-hw-08/"
   },
   "repository": {
     "type": "git",
