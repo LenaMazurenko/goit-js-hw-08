@@ -3,12 +3,12 @@ import throttle from 'lodash.throttle';
 const form = document.querySelector('.feedback-form');
 const LOCALSTORAGE_KEY = 'feedback-form-state';
 
-updateOutputs();
+updateInputs();
 
-form.addEventListener('input', onInputEvent);
+form.addEventListener('input', throttle(writeToLocalStorage, 500));
 form.addEventListener('submit', onFormSubmit);
 
-function onInputEvent(event) {
+function writeToLocalStorage(event) {
   const dataToLocalStorage = {
     email: event.currentTarget.elements.email.value,
     message: event.currentTarget.elements.message.value,
@@ -18,19 +18,25 @@ function onInputEvent(event) {
 
 function onFormSubmit(event) {
   event.preventDefault;
-  const dataFromLocalStorage = localStorage.getItem(LOCALSTORAGE_KEY) || '';
-  console.log(JSON.parse(dataFromLocalStorage));
+  console.log(''); //почему не срабатывают два консоля ниже без этого ненужного! консоля?!!!
+  const obj = readFromLocalStorage();
+  console.log(`email: ${obj.email}, message: ${obj.message}`);
+
   localStorage.removeItem(LOCALSTORAGE_KEY);
   form.reset();
 }
 
-function updateOutputs() {
+function updateInputs() {
+  const obj = readFromLocalStorage();
+  form.elements.email.value = obj.email || '';
+  form.elements.message.value = obj.message || '';
+}
+
+function readFromLocalStorage() {
   const stringFromLocalStorage = localStorage.getItem(LOCALSTORAGE_KEY) || '';
 
   if (stringFromLocalStorage) {
-    const dataFromLocalStorage = JSON.parse(stringFromLocalStorage);
-
-    form.elements.email.value = dataFromLocalStorage.email;
-    form.elements.message.value = dataFromLocalStorage.message;
+    return JSON.parse(stringFromLocalStorage);
   }
+  return {};
 }
