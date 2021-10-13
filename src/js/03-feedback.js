@@ -9,11 +9,11 @@ form.addEventListener('input', throttle(writeToLocalStorage, 500));
 form.addEventListener('submit', onFormSubmit);
 
 function writeToLocalStorage(event) {
-  const dataToLocalStorage = {
-    email: event.currentTarget.elements.email.value,
-    message: event.currentTarget.elements.message.value,
+  const formData = {
+    email: form.elements.email.value,
+    message: form.elements.message.value,
   };
-  localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(dataToLocalStorage));
+  localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formData));
 }
 
 function onFormSubmit(event) {
