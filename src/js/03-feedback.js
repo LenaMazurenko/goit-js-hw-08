@@ -5,7 +5,7 @@ const LOCALSTORAGE_KEY = 'feedback-form-state';
 
 updateInputs();
 
-form.addEventListener('input', throttle(writeToLocalStorage, 500));
+form.addEventListener('input', writeToLocalStorage);
 form.addEventListener('submit', onFormSubmit);
 
 function writeToLocalStorage(event) {
@@ -17,8 +17,7 @@ function writeToLocalStorage(event) {
 }
 
 function onFormSubmit(event) {
-  event.preventDefault;
-  console.log(''); //почему не срабатывают два консоля ниже без этого ненужного! консоля?!!!
+  event.preventDefault();
   const obj = readFromLocalStorage();
   console.log(`email: ${obj.email}, message: ${obj.message}`);
 
